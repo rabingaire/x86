@@ -1,6 +1,5 @@
-global _main
-
-_main:
-  mov     rax, 0x2000001 ; exit
-  mov     rdi, 42
-  syscall
+global _start
+_start:
+  mov     eax, 1
+  mov     ebx, 42
+  int 0x80
