@@ -17,9 +17,11 @@ endif
 asm-build:
 	nasm -f elf32 $(INPUT_FILE_NAME) -o $(OUTPUT_FILE_NAME).o
 	ld -o $(OUTPUT_FILE_NAME) $(OUTPUT_FILE_NAME).o
+	rm -rf $(OUTPUT_FILE_NAME).o
+	mkdir -p ./build && mv $(OUTPUT_FILE_NAME) ./build/
 
 asm-run: asm-build
-	./$(OUTPUT_FILE_NAME)
+	./build/$(OUTPUT_FILE_NAME)
 
 build:
 	docker image build -t x86 .
